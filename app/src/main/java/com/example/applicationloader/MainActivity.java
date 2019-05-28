@@ -21,13 +21,16 @@ public class MainActivity extends AppCompatActivity {
     private Uri filePath;
     private String imagepath;
     private ImageView image;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.button2);
+        image = findViewById(R.id.image);
+        image.setVisibility(View.INVISIBLE);
+        button = findViewById(R.id.button2);
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                image = findViewById(R.id.image);
                 image.setImageBitmap(bitmap);
+                button = findViewById(R.id.button2);
+                button.setVisibility(View.INVISIBLE);
+                image.setVisibility(View.VISIBLE);
 
 
             } catch (IOException e) {
