@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private String imagepath;
     private ImageView image;
     private Button button;
+    private Button returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 button = findViewById(R.id.button2);
                 button.setVisibility(View.INVISIBLE);
                 image.setVisibility(View.VISIBLE);
+                returnButton = findViewById(R.id.return_button);
+                returnButton.setVisibility(View.VISIBLE);
 
 
             } catch (IOException e) {
@@ -75,5 +78,14 @@ public class MainActivity extends AppCompatActivity {
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+
+    public void returnButton(View v){
+        image = findViewById(R.id.image);
+        button = findViewById(R.id.button2);
+        returnButton = findViewById(R.id.return_button);
+        returnButton.setVisibility(View.INVISIBLE);
+        image.setVisibility(View.INVISIBLE);
+        button.setVisibility(View.VISIBLE);
     }
 }
